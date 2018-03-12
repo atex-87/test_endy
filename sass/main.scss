@@ -1,0 +1,161 @@
+
+@import "_reset.scss";
+$font_family:'Roboto', sans-serif;
+$row_height: 85px;
+$font_size: 16px;
+$button_height: 25px;
+$color_gray: #dbdbdb;
+$color_red: #f00;
+$color_white: #fff;
+.wr {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 15px;
+	font-family: $font_family;
+	font-size: $font_size;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	line-height: 1.2;
+  }
+.count{
+	background: $color_red;
+	content: '';
+	display: block;
+}
+.cart_table {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 90px;
+	&--tr{
+		display: inline-flex;
+		justify-content: space-between;
+		align-items: center;
+		height: $row_height;
+		border-bottom: 1px solid $color_gray;
+		width: 910px;
+		&:first-child{
+			border-top: 1px solid $color_gray;
+		}
+		&.removed{
+			>:not(.buttons){
+				opacity: 0.5;
+			}
+			button{
+				border-color: $color_red;
+				color:  $color_white;
+				background: $color_red;
+				&:hover{
+					background: darken($color_red,3%);
+				}
+			}
+		}
+	}
+
+	&--td{
+		p {
+			height: 1.2*$font_size;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			width: 238px;
+			&.title{
+				font-weight: bold;
+			}
+		}
+	}
+
+	.image_wrap {
+		height: $row_height;
+		width: 150px;
+		overflow: hidden;
+	}
+
+	.counter{
+		display: inline-flex;
+		&_value{
+			text-align: center;
+			border: none;
+			width: 33px;
+			height: 25px;
+			&:focus{
+				outline: none;
+			}
+		}
+
+		&_minus, &_plus {
+			width: 25px;
+			height: 25px;
+			border-radius: 25px;
+			border: 1px solid $color_red;
+			box-sizing: border-box;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			&.disable{
+				opacity: 0.5;
+				cursor: default;
+			}
+			&:after{
+				@extend .count;
+				height: 1px;
+				width: 11px;
+			}
+		}
+		&_plus:before{
+			@extend .count;
+			height: 11px;
+			width: 1px;
+			position: absolute;
+		}
+	}
+	button{
+		height: $button_height;
+		width: 82px;
+		border-radius: 8px;
+		border: 1px solid $color_gray;
+		user-select: none;
+		font-size: 13px;
+		cursor: pointer;
+		transition: 0.25s;
+		color: $color_gray;
+		background: $color_white;
+		&:hover{
+			background: darken($color_white,3%);
+		}
+	}
+}
+.progress_bars{
+	&--item{
+		width: 450px;
+		display: inline-flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 55px;
+	}
+	.progress_bar{
+		height: $button_height;
+		width: 100%;
+		border-radius: 8px;
+		box-shadow: inset 0 0 0 1px $color_gray;
+		overflow: hidden;
+		&--wrap{
+			width: 242px;
+			position: relative;
+		}
+		.progress{
+			background: $color_red;
+			height: 100%;
+		}
+	}
+	.progress-description{
+		position: absolute;
+		bottom: -20px;
+		width: 30px;
+		text-align: center;
+		margin-left: -10px;
+		font-weight: bold;
+		font-size: 13px;
+	}	
+}
