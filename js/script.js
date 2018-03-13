@@ -50,7 +50,7 @@ var ProgressBar = (function(){
 	return {
 		init: function(){
 			for(var i = 0; i < _bars.length; i++) {
-				var progress = _bars[i].dataset.progress;
+				var progress = _bars[i].dataset.progress || 0;
 				_bars[i].querySelector('.progress').style.width = progress+'%';
 				_bars[i].nextElementSibling.innerText = progress+'%';
 				_bars[i].nextElementSibling.style.left = progress+'%';
